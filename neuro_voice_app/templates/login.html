@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+  <div class="card">
+    <h1>Neuro Linguistic Voice Interface</h1>
+    <h2>Login</h2>
+    {% if error %}
+      <div class="alert">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+      <input name="username" placeholder="Username" required>
+      <input name="password" type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>New user? <a href="{{ url_for('register') }}">Register</a></p>
+    <p>Admin: username <strong>admin</strong> password <strong>password</strong></p>
+  </div>
+</body>
+</html>

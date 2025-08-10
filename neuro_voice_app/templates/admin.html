@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="light">
+  <header class="topbar">
+    <div class="title">Admin - Neuro Linguistic Voice Interface</div>
+    <div class="controls">
+      <a class="link" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>All Users' Voice Data</h2>
+
+    {% if grouped %}
+      {% for user, items in grouped.items() %}
+        <div class="user-block">
+          <h3>{{ user }}</h3>
+          <ul>
+            {% for it in items %}
+              <li><strong>{{ it.ts }}</strong>: {{ it.text }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No entries found.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

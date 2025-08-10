@@ -1,0 +1,86 @@
+/* Basic light/dark theming */
+:root {
+  --bg-light: #f5f7fb;
+  --card-light: #ffffff;
+  --text-light: #0b2545;
+  --primary: #2b7cff;
+  --accent: #ff6f61;
+  --bg-dark: #0f1724;
+  --card-dark: #111827;
+  --text-dark: #e6eef8;
+}
+
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-family: Arial, sans-serif;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  font-family: Arial, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, var(--primary), #6aa6ff);
+  color: white;
+}
+
+.topbar .title { font-weight: 600; }
+.topbar .controls { display: flex; gap: 10px; align-items: center; }
+
+.link { color: white; text-decoration: none; padding: 6px 10px; border-radius: 6px; background: rgba(0,0,0,0.15); }
+
+.container { max-width: 900px; margin: 24px auto; padding: 18px; border-radius: 10px; background: rgba(255,255,255,0.9); }
+body.dark .container { background: rgba(255,255,255,0.03); }
+
+.card { max-width: 420px; margin: 60px auto; padding: 20px; border-radius: 10px; background: var(--card-light); box-shadow: 0 10px 30px rgba(2,6,23,0.08); }
+body.dark .card { background: var(--card-dark); box-shadow: none; color: var(--text-dark); }
+
+h1 { margin: 0 0 8px 0; font-size: 20px; }
+h2 { margin-top: 0; }
+.alert { background: #ffe8e6; color: #8a1f18; padding: 8px; border-radius: 6px; margin-bottom: 10px; }
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #dfe7f3;
+  background: white;
+  box-sizing: border-box;
+}
+body.dark input, body.dark textarea, body.dark select {
+  background: #0b1220;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-dark);
+}
+
+button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.voice { display: grid; gap: 8px; }
+#output { min-height: 80px; resize: vertical; }
+
+.history ul { padding-left: 20px; }
+
+.user-block {
+  background: rgba(0,0,0,0.03);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+body.dark .user-block { background: rgba(255,255,255,0.02); }

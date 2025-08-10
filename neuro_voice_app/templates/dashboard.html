@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+  <header class="topbar">
+    <div class="title">Neuro Linguistic Voice Interface</div>
+    <div class="controls">
+      <form action="{{ url_for('change_theme') }}" method="post" class="theme-form">
+        <select name="theme" onchange="this.form.submit()">
+          <option value="light" {% if theme=='light' %}selected{% endif %}>Light</option>
+          <option value="dark" {% if theme=='dark' %}selected{% endif %}>Dark</option>
+        </select>
+      </form>
+      <a class="link" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Welcome, {{ username }}</h2>
+
+    <section class="voice">
+      <button id="voiceBtn">Start Speaking</button>
+      <textarea id="output" placeholder="Recognized text will appear here"></textarea>
+      <button id="saveBtn">Save to my history</button>
+      <div id="status"></div>
+    </section>
+
+    <section class="history">
+      <h3>Your Saved Voice Texts</h3>
+      {% if voice_texts %}
+        <ul>
+          {% for item in voice_texts %}
+            <li><strong>{{ item.ts }}</strong>: {{ item.text }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No saved entries yet.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
